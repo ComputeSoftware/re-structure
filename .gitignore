@@ -1,0 +1,10 @@
+/*.log
+/target
+/*-init.clj
+/resources/public/js
+out
+*.iml
+.idea
+.shadow-cljs
+node_modules
+.nrepl-port

@@ -1,0 +1,16 @@
+{:lein   true
+ :nrepl  {:port 9000}
+ :builds {:app      {:target     :browser
+                     :output-dir "resources/public/js"
+                     :asset-path "/js"
+                     :modules    {:main {:entries [basic.core]}}
+                     :dev        {:compiler-options {:closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}
+                                                     :infer-externs   :auto}}
+                     :devtools   {:after-load   basic.core/on-reload
+                                  :http-root    "resources/public"
+                                  :http-port    3000
+                                  :http-handler shadow.http.push-state/handle
+                                  :preloads     [devtools.preload
+                                                 day8.re-frame-10x.preload]}}
+          :ci-tests {:target    :karma
+                     :output-to "target/ci.js"}}}
