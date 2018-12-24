@@ -27,7 +27,7 @@
   test-event
   ""
   {::rf/spec ::rf/no-params
-   ::rf/cofx [[`my-cofx]]}
+   ::rf/cofx [[my-cofx]]}
   [{:keys [rand-int]} _]
   (do
     (println "called test event!" rand-int)

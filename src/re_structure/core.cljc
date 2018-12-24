@@ -77,6 +77,11 @@
         ~handler)))
 
 #?(:clj
+   (defn ns-qualify
+     [sym]
+     (symbol (str *ns*) (str sym))))
+
+#?(:clj
    (defn reg-event-*-form
      [ctor name {::keys [spec cofx]} handler]
      `(do
@@ -87,7 +92,9 @@
           (map (fn [[id# value#]]
                  (if value#
                    (inject-cofx id# value#)
-                   (inject-cofx id#))) ~cofx)
+                   (inject-cofx id#)))
+               '~(map (fn [[cofx-sym# val#]]
+                        [(ns-qualify cofx-sym#) val#]) cofx))
           ~handler))))
 
 #?(:clj
@@ -119,7 +126,7 @@
 
 (defmacro def-rf*
   [kind name docstring attr-map params & body]
-  (let [qualified-name (symbol (str *ns*) (str name))]
+  (let [qualified-name (ns-qualify name)]
     `(let [v# (defn ~name ~@(when docstring [docstring]) ~params ~@body)]
        (swap! re-frame-init-fns conj (fn []
                                        ~(reg-*-form kind qualified-name attr-map name)))
