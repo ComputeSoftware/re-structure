@@ -1,12 +1,14 @@
 {
   "name": "re-structure",
   "dependencies": {
-    "react": "15.5.4",
-    "react-dom": "15.5.4",
-    "create-react-class": "15.5.3"
+    "create-react-class": "^15.6.2",
+    "highlight.js": "^9.12.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-highlight.js": "^1.0.7"
   },
   "devDependencies": {
-    "react-flip-move": "2.9.17",
-    "shadow-cljs": "^2.2.29"
+    "react-flip-move": "3.0.3",
+    "shadow-cljs": "2.8.36"
   }
 }

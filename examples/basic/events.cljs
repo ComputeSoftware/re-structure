@@ -32,4 +32,3 @@
   (do
     (println "called test event!" rand-int)
     {`my-fx [1 2]}))
-
